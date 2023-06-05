@@ -1,5 +1,5 @@
 {
-  "name": "platzi-intro-react-base",
+  "name": "todo-machine",
   "version": "0.1.0",
   "dependencies": {
     "react": "^18",
