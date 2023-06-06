@@ -46,6 +46,40 @@ function App() {
       return lowerText.includes(searchedText);
     });
   
+  // Creamos una función para marcar un todo como completado, buscando de forma única al todo que queremos
+  // segun el texto (Por eso le pasamos text como parámetros).
+  const checkTodo = (text) => {
+    // Queremos que al darle click cambie el todo a completado para eso usaremos el operador de 
+    // propagación para crear una copia de array todos 
+    const toCheckTodo = [...todos];
+
+    // Obtenemos el todo que estamos buscando haciendo un .findIndex a la copia del array de "todos"
+    // y pasamos como función para encontrar la coincidencia el ítem (todo) para el cual se hace la búsqueda
+    // y si el texto del ítem (todo.text) es igual al texto que ingresa entonces ese es el índice buscado. 
+    const todoIndex = toCheckTodo.findIndex(
+      (todo) => todo.text === text
+    );
+
+    // Al índice pasado, le aplicamos un condicional para poder manejar el estado de completado o no completado
+    (!toCheckTodo[todoIndex].completed) 
+      ? toCheckTodo[todoIndex].completed = true
+      : toCheckTodo[todoIndex].completed = false;
+
+    setTodos(toCheckTodo)
+  };
+  
+  // Reutilizamos la función checkTodo
+  const deleteTodo = (text) => {
+    const toDeleteTodo = [...todos];
+    const todoIndex = toDeleteTodo.findIndex(
+      (todo) => todo.text === text
+    );
+    // Utilizamos el método de manipulación de arrays splice para quitar un elemento. El primer parámetro es 
+    // el índice y el segundo es la cantidad de elementos a partir de ese índice queremos quitar. 
+    toDeleteTodo.splice(todoIndex, 1);
+    setTodos(toDeleteTodo)
+  };
+
   return (
     // En react se debe return solo un componente que envuelva al resto de componentes hijos.
     // Se puede usar un React.Fragment como contenedor invisible. 
@@ -67,6 +101,12 @@ function App() {
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            // Encapsulamos la función, para poderle pasar los parámetros, si le ponemos paréntesis a 
+            // "checkTodo()" significa que todo el tiempo estaría ejecutandose, rompiendo la aplicación
+            // Con la estructura "() => checkTodo(todo.text)" Estamos mandando una función anónima sin 
+            // ejecutar que a su vez llama a otra función que recibe el parámetro.
+            onComplete = {() => checkTodo(todo.text)}
+            onDelete = {() => deleteTodo(todo.text)}
           />
         ))}
       </TodoList>
