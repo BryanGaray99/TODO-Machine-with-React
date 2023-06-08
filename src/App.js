@@ -8,21 +8,33 @@ import React from 'react';
 // El estandar en react es que, si la función empieza con mayúscula, es 
 // un componente.
 
-const defaultTodos = [
-  { text:'Entender las Leyes de Newton', completed: true },
-  { text:'Entender el Electro-Magnestismo', completed: true },
-  { text:'Entender la Relatividad Especial y General', completed: true },
-  { text:'Entender la Mecánica Cuántica', completed: false },
-  { text:'Entender la Electrodinámica Cuántica', completed: false },
-  { text:'Entender la Cromodinámica Cuántica', completed: false },
-  { text:'Entender una Teoría Unificada', completed: false },
-  // { text:'Entender la Teoría de Cuerdas', completed: false }
-];
+// const defaultTodos = [
+//   { text:'Ir a la luna en bicicleta', completed: true },
+//   { text:'Poner otro ladrillo en el muro', completed: true },
+//   { text:'Construir una esfera de Dyson', completed: true },
+// ];
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 function App() {
   // El estado se consume y se actualiza. Se puede establecer un estado inicial en el React.useState()
   const [searchValue, setSearchValue] = React.useState('');
-  const [todos, setTodos] = React.useState(defaultTodos);
+
+  // Traemos del localStorage a nuestro almacen de todos: 'TODOS_V1'
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  let parsedTodos;
+
+  // Si 'TODOS_V1' está vacío (NULL or Undefined) en el localStorage es decir False entonces:
+  if (!localStorageTodos) {
+    // Declaramos como un array vacío [] a TODOS_V1
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    // También le decimos a parsedTODO que es igual a un array vacío
+    parsedTodos = []; 
+  } else {
+    // Si ya tiene información entonces solo lo parseamos
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [todos, setTodos] = React.useState(parsedTodos);
 
   // Manipulación de arrays: Filter para devolver un array con todos los elementos que cumplan con una condición.
   // La arrow function se lee: recibiendo un "todo" devolvemos los que sean "todo.completed"
@@ -46,6 +58,13 @@ function App() {
       return lowerText.includes(searchedText);
     });
   
+  // Creamos una función para guardar los cambios (Marcar como completado o eliminar TODOs) en el localStorage
+  const saveTodos = (newTodos) => {
+    // Actualizamos en el localStorage 'TODOS_V1'
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+    // Actualizamos el estado de setTODOS
+    setTodos(newTodos);
+  }
   // Creamos una función para marcar un todo como completado, buscando de forma única al todo que queremos
   // segun el texto (Por eso le pasamos text como parámetros).
   const checkTodo = (text) => {
@@ -65,7 +84,7 @@ function App() {
       ? toCheckTodo[todoIndex].completed = true
       : toCheckTodo[todoIndex].completed = false;
 
-    setTodos(toCheckTodo)
+    saveTodos(toCheckTodo)
   };
   
   // Reutilizamos la función checkTodo
@@ -77,7 +96,7 @@ function App() {
     // Utilizamos el método de manipulación de arrays splice para quitar un elemento. El primer parámetro es 
     // el índice y el segundo es la cantidad de elementos a partir de ese índice queremos quitar. 
     toDeleteTodo.splice(todoIndex, 1);
-    setTodos(toDeleteTodo)
+    saveTodos(toDeleteTodo)
   };
 
   return (
