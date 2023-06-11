@@ -1,10 +1,10 @@
 import React from 'react';
-import './TodoSearch.css'
-import { AiOutlineSearch } from 'react-icons/ai'
-function TodoSearch({searchValue, setSearchValue}) {
-    
-    // console.log('El usuario busca: ' + searchValue);
+import './TodoSearch.css';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { TodoContext } from '../../Context/TodoContext';
 
+function TodoSearch() {
+    const { searchValue, setSearchValue} = React.useContext(TodoContext);
     return (
         <span className='TodoSearch'>
             <input 
