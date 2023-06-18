@@ -9,7 +9,7 @@ function TodoProvider({ children }) {
           loading, error } = useLocalStorage('TODOS_V1', []);
 
   const [searchValue, setSearchValue] = React.useState('');
-  const [openModal, setOpenModal] = React.useState(true);
+  const [openModal, setOpenModal] = React.useState(false);
 
   const completedTodos = todos.filter( todo => !!todo.completed).length;
 
@@ -26,6 +26,16 @@ function TodoProvider({ children }) {
       return lowerText.includes(searchedText);
     });
   
+  // Recibe el texto
+  const addTodo = (text) => {
+    const addNewTodo = [...todos]; // Hace una copia de los todos
+    addNewTodo.push({     // Agrega un nuevo todo con sus props 
+      text,               // Se agrega el texto
+      completed: false,   // Se agrega la propieda completado
+    });
+    saveTodos(addNewTodo); // Usamos la función de guardar todos igual que en check y delete para actualizar el estado
+  };
+  
   const checkTodo = (text) => {
     const toCheckTodo = [...todos];
     const todoIndex = toCheckTodo.findIndex(
@@ -38,7 +48,7 @@ function TodoProvider({ children }) {
 
     saveTodos(toCheckTodo)
   };
-  
+
   const deleteTodo = (text) => {
     const toDeleteTodo = [...todos];
     const todoIndex = toDeleteTodo.findIndex(
@@ -51,12 +61,13 @@ function TodoProvider({ children }) {
     <TodoContext.Provider value={{      
       loading,
       error,
-      checkTodo,
+      completedTodos,
       totalTodos,
       searchValue,
       setSearchValue,
       searchedTodos,
-      completedTodos,
+      addTodo,
+      checkTodo,
       deleteTodo,
       openModal,
       setOpenModal

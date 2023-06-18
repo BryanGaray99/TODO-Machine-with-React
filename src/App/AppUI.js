@@ -7,6 +7,7 @@ import { CreateTodoButton } from '../Components/CreateTodoButton/CreateTodoButto
 import { TodosLoading } from '../Components/TodosLoading';
 import { TodosError } from '../Components/TodosError';
 import { EmptyTodos } from '../Components/EmptyTodos';
+import { TodoForm } from '../Components/TodoForm';
 import { TodoContext } from '../Context/TodoContext';
 import { Modal } from "../Components/Modal";
 
@@ -39,9 +40,9 @@ function AppUI() {
                             : null 
                         }
 
-                        { !loading && totalTodos.length === 0 
-                            ?  <EmptyTodos />
-                            : null 
+                        { (!loading && totalTodos === 0)
+                            ? <EmptyTodos />
+                            : null
                         }
 
                         {searchedTodos.map(todo => (
@@ -55,11 +56,13 @@ function AppUI() {
                         ))}
             </TodoList>
 
-            <CreateTodoButton />
+            <CreateTodoButton 
+                setOpenModal={setOpenModal}
+            />
             
             {openModal && (
                 <Modal>
-                    Portales!
+                    <TodoForm />
                 </Modal>
             )}
                 
