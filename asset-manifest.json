@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/TODO-Machine-with-React/static/css/main.b217719b.css",
+    "main.js": "/TODO-Machine-with-React/static/js/main.9dae2282.js",
+    "static/media/luna5.png": "/TODO-Machine-with-React/static/media/luna5.b7dcb0b4d1bae620f814.png",
+    "index.html": "/TODO-Machine-with-React/index.html",
+    "static/media/delete.svg": "/TODO-Machine-with-React/static/media/delete.2cfbc54deebd87d7ea9cf648765e70a5.svg",
+    "static/media/check.svg": "/TODO-Machine-with-React/static/media/check.ec0a68811eaff4a8aabfbaf34839ccbf.svg",
+    "main.b217719b.css.map": "/TODO-Machine-with-React/static/css/main.b217719b.css.map",
+    "main.9dae2282.js.map": "/TODO-Machine-with-React/static/js/main.9dae2282.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b217719b.css",
+    "static/js/main.9dae2282.js"
+  ]
+}
