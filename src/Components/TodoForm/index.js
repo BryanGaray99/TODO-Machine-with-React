@@ -27,7 +27,7 @@ function TodoForm () {
 
             <label>Escribe una nueva tarea!</label>
             <textarea 
-                placeholder='Escribir una fábula'
+                placeholder='Ir a la luna en bicicleta'
                 value = {newTodoValue}
                 onChange={onChange}
                 required

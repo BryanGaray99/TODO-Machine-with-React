@@ -1,0 +1,111 @@
+.modo-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+  
+.modo-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  color: #fafafa;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(45deg, red, blue, green, black);
+  background-size: 400% 400%;
+  animation: change 10s ease infinite;
+}
+
+.modo-text {
+  margin-right: 8px; /* Espacio entre el texto y el ícono */
+}
+
+.modo-icon {
+  font-size: 20px;
+}
+
+.modo-button:hover {
+  background-color: #F2F2F2;
+}
+
+.modo-button.modo-fiesta {
+  background: white;
+  color: black;
+  animation: none;
+}
+
+.modo-fiesta {
+    background: linear-gradient(45deg, red, blue, green, black);
+    background-size: 400% 400%;
+    animation: change 25s ease infinite;
+    position: relative;
+}
+  
+@keyframes change {
+  0% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.modo-fiesta::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  bottom: -100%;
+  width: calc(33.33vw + 1px);
+  height: 100%;
+  background-image: url("/src/assets/luna5.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: calc(33.33vw + 1px) auto;
+  z-index: -1;
+  animation: bounceIn 1s ease-out forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    bottom: -100%;
+    transform: translateY(0);
+  }
+  60% {
+    bottom: 10%;
+    transform: translateY(-30px);
+  }
+  80% {
+    bottom: 0;
+    transform: translateY(0);
+  }
+  100% {
+    bottom: 0;
+    transform: translateY(0);
+  }
+}
+ 
+
+/* .modo-fiesta::before {
+  content: "";
+  position: absolute;
+  bottom: 50px;
+  left: 200px;
+  width: 48px;
+  height: 48px;
+  background-image: url("/src/assets/astronauta.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: moveAstronauta 5s infinite linear;
+  z-index: -2;
+}
+
+@keyframes moveAstronauta {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-400px) rotate(360deg);
+  }
+}
+ */

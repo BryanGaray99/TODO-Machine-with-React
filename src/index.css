@@ -7,9 +7,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background: linear-gradient(45deg, red, blue, green, black);
-  background-size: 400% 400%;
-  animation: change 30s ease infinite; */
 }
 
 #root {
@@ -17,12 +14,7 @@ body {
   padding: 24px;
   position: relative;
   min-width: 300px;
+  border: 2px solid #61DAFA;
   border-radius: 24px;
   background-color: rgba(255, 255, 255, 0.473);
-}
-
-@keyframes change {
-  0%{background-position: 0 50%;}
-  50%{background-position: 100% 50%;}
-  100%{background-position: 0 50%;}
 }

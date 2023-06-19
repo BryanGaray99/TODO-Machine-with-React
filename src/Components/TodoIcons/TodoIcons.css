@@ -7,7 +7,8 @@
     width: 48px;
     font-size: 24px;
     font-weight: bold;
-    /* background-color: #CCC; */
+    background-color: #fafafa;
+    border-radius: 50%;
   }
   
 .Icon-container-check {
@@ -17,7 +18,7 @@
   
 .Icon-container-delete {
   position: absolute;
-  top: -24px;
+  top: -20px;
   right: 0;
 }
 
@@ -28,9 +29,9 @@
 
 /* Icon-svg sería un hijo de Icon container entonces para cambiarle alguna propiedad podemos acceder en css
 a un hijo de la siguiente manera:  */
-.Icon-container-check:hover .Icon-svg {
+/* .Icon-container-check:hover .Icon-svg {
   fill: green;
-}
+} */
 
 .Icon-container-delete:hover .Icon-svg {
   fill: red;

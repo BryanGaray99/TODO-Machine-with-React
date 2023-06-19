@@ -1,0 +1,31 @@
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 100px;
+  gap: 16px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #fafafabe;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.footer-text {
+  color: #1E1E1F;
+  text-decoration: none;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+}
+
+.footer-icon-link {
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+.footer-icon {
+  width: 24px;
+  height: 24px;
+}

@@ -10,6 +10,7 @@ function TodoProvider({ children }) {
 
   const [searchValue, setSearchValue] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false);
+  const [cosmicParty, setCosmicParty] = React.useState(false);
 
   const completedTodos = todos.filter( todo => !!todo.completed).length;
 
@@ -70,7 +71,9 @@ function TodoProvider({ children }) {
       checkTodo,
       deleteTodo,
       openModal,
-      setOpenModal
+      setOpenModal,
+      cosmicParty,
+      setCosmicParty
       }}>
 
       {children}

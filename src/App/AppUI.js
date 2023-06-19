@@ -10,6 +10,8 @@ import { EmptyTodos } from '../Components/EmptyTodos';
 import { TodoForm } from '../Components/TodoForm';
 import { TodoContext } from '../Context/TodoContext';
 import { Modal } from "../Components/Modal";
+import { PartyMode } from "../Components/PartyMode"
+import { Footer } from "../Components/Footer";
 
 function AppUI() {
     const {
@@ -25,7 +27,8 @@ function AppUI() {
 
     return (
         // React.Fragment como contenedor invisible.
-        <> 
+        <>  
+            <PartyMode/>
             <TodoCounter/>
             <TodoSearch/>
         
@@ -65,7 +68,8 @@ function AppUI() {
                     <TodoForm />
                 </Modal>
             )}
-                
+            
+            <Footer />
         </>
     );
 }
