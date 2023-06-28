@@ -19,7 +19,7 @@ la url pública.
 <p>Para actualizar luego de algun cambio se puede volver a correr npm run deploy.</p>
 
 ## Vista de la página 
-Link: <a href=" https://bryangaray99.github.io/TODO-Machine-with-React" target="_blank" rel="noopener noreferrer">Click Aquí!</a>
+Link: <a href="https://bryangaray99.github.io/TODO-Machine-with-React/" target="_blank" rel="noopener noreferrer">Click Aquí!</a>
 
 <p align="center">
   <img src="/src/assets/preview.png" alt="Preview.png">
